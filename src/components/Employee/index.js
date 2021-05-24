@@ -1,29 +1,35 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import "./style.scss";
 import { addToActive, deleteFromActive } from "../../AC";
 
-const Index = props => {
+const Index = (props) => {
   const employee = `${props.employee.lastName} ${props.employee.firstName}`;
 
   return (
     <div>
-      {employee}
+      <span className={props.isActive ? "active" : ""}>{employee}</span>
       <div onChange={handleChange(props)}>
         <ul className="vertical-list">
-          <li><input
-            type="radio"
-            value={false}
-            name={`is-active-${props.employee.id}`}
-            defaultChecked={!props.isActive}
-          /> not active</li>
-          <li><input
-            type="radio"
-            value={true}
-            name={`is-active-${props.employee.id}`}
-            defaultChecked={props.isActive}
-          /> active</li>
+          <li>
+            <input
+              type="radio"
+              value={false}
+              name={`is-active-${props.employee.id}`}
+              defaultChecked={!props.isActive}
+            />{" "}
+            not active
+          </li>
+          <li>
+            <input
+              type="radio"
+              value={true}
+              name={`is-active-${props.employee.id}`}
+              defaultChecked={props.isActive}
+            />{" "}
+            active
+          </li>
         </ul>
       </div>
     </div>
@@ -43,10 +49,15 @@ Index.propTypes = {
   deleteFromActive: PropTypes.func.isRequired,
 };
 
-const handleChange = props => ev => {
-  JSON.parse(ev.target.value) ? props.addToActive(props.employee.id) : props.deleteFromActive(props.employee.id);
-}
+const handleChange = (props) => (ev) => {
+  JSON.parse(ev.target.value)
+    ? props.addToActive(props.employee.id)
+    : props.deleteFromActive(props.employee.id);
+};
 
-export default connect((state, ownProps) => ({
-    isActive: state.employees.selected.includes(ownProps.employee.id)
-}), { addToActive, deleteFromActive })(Index);
+export default connect(
+  (state, ownProps) => ({
+    isActive: state.employees.selected.includes(ownProps.employee.id),
+  }),
+  { addToActive, deleteFromActive }
+)(Index);

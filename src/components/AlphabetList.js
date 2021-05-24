@@ -1,15 +1,18 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import AlphabetBlock from "./AlphabetBlock/";
 
-const AlphabetList = props => {
+const AlphabetList = (props) => {
   let alphabets = {};
   for (let char = 10; char < 35; char++) {
     alphabets[char.toString(36).toUpperCase()] = [];
   }
-  Object.values(props.users).forEach(user => alphabets[user.lastName[0].toUpperCase()].push(user));
-  alphabets = Object.entries(alphabets)
-    .map(([key, value], idx) => <AlphabetBlock key={idx} title={key} users={value} />)
+  Object.values(props.users).forEach((user) =>
+    alphabets[user.lastName[0].toUpperCase()].push(user)
+  );
+  alphabets = Object.entries(alphabets).map(([key, value], idx) => (
+    <AlphabetBlock key={idx} title={key} users={value} />
+  ));
 
   return (
     <div>
@@ -20,7 +23,7 @@ const AlphabetList = props => {
 };
 
 AlphabetList.propTypes = {
-  employees: PropTypes.object
+  employees: PropTypes.object,
 };
 
 export default AlphabetList;

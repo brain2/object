@@ -1,4 +1,5 @@
-export const compareBy = attr => (a, b) => (a[attr] > b[attr]) - (a[attr] < b[attr]);
+export const compareBy = (attr) => (a, b) =>
+  (a[attr] > b[attr]) - (a[attr] < b[attr]);
 
 export const groupByMonth = (users, ids) => {
   const monthNumber = 12;
@@ -14,4 +15,4 @@ export const groupByMonth = (users, ids) => {
     }
     return acc;
   }, new Array(monthNumber));
-}
+};
