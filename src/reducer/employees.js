@@ -6,19 +6,10 @@ const defaultState = {
 }
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (employeesState = defaultState, action) => {
-// export default (employeesState, action) => {
   const { type, payload } = action;
 
   switch (type) {
     case LOAD_EMPLOYEES + SUCCESS:
-      // const users = {};
-      // payload.forEach(employee => {
-      //   const title = employee.lastName[0].toUpperCase();
-      //   users[title] ? users[title].push(employee) : users[title] = [employee];
-      // });
-      // Object.values(users)
-      //   .forEach(arr => arr.sort((a, b) => (a.lastName > b.lastName) - (a.lastName < b.lastName)));
-
       const users = payload.reduce((acc, user) => {
         acc[user.id] = user;
         return acc;

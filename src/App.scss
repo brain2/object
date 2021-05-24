@@ -1,0 +1,48 @@
+@import "variables";
+
+.container {
+    padding: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.align-top {
+    vertical-align: top;
+}
+
+.me {
+    margin-right: 30px;
+}
+
+.mb {
+    margin-bottom: 30px;
+}
+
+@mixin make-col($size: false, $columns: $grid-columns) {
+    @if $size {
+        flex: 0 0 auto;
+        width: percentage($size / $columns);
+    } @else {
+        flex: 1 1 0;
+        max-width: 100%;
+    }
+}
+
+@for $i from 1 through $grid-columns {
+    .col-#{$i} {
+        @include make-col($i, $grid-columns);
+    }
+}

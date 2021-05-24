@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import {useEffect} from "react";
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
+import { loadEmployees } from "./AC";
+import './App.scss';
+import AlphabetList from './components/AlphabetList';
+import BirthdayList from './components/BirthdayList/';
+import {userPropTypes} from "./propTypes";
 
-function App() {
+const App = props => {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(props.loadEmployees, []);
+
+  if (!Object.keys(props.users).length) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="row">
+        <div className="col-8">
+          <AlphabetList users={props.users} />
+        </div>
+        <div className="col-4">
+          <BirthdayList users={props.users} />
+        </div>
+      </div>
     </div>
   );
 }
 
-export default App;
+App.propTypes = {
+  users: PropTypes.objectOf(PropTypes.shape(userPropTypes))
+}
+
+export default connect(state => ({
+  users: state.employees.users
+}), { loadEmployees })(App);
