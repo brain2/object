@@ -1,5 +1,21 @@
 @import "variables";
 
+body {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+
+  background-image: linear-gradient(
+    135deg,
+    #8383c6 0%,
+    #c6c5e2 60%,
+    #a9bcf2 100%
+  );
+}
+
 .container {
   padding: 1.5rem;
   margin-right: auto;
