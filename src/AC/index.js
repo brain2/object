@@ -8,8 +8,7 @@ import {
 } from "../constants";
 
 export function loadEmployees() {
-  // const url = "https://yalantis-react-school-api.yalantis.com/api/task0/users";
-  const url = "/api/employees";
+  const url = "https://yalantis-react-school-api.yalantis.com/api/task0/users";
 
   return (dispatch) => {
     dispatch({
