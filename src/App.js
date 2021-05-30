@@ -9,8 +9,8 @@ const App = (props) => {
   return (
     <Router>
       <Switch>
-        <Route path="/employees" component={Employees} />
-        <Route exact path="/" component={Home} />
+        <Route path="/object/employees" component={Employees} />
+        <Route exact path="/object/" component={Home} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

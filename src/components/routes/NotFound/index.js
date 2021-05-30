@@ -12,7 +12,7 @@ function NotFound(props) {
         Maybe this page moved? Got deleted? Is hiding out in quarantine? Never
         existed in the first place?
         <p>
-          Let's go <NavLink to="/">home</NavLink> and try from there.
+          Let's go <NavLink to="/object/">home</NavLink> and try from there.
         </p>
       </div>
     </div>

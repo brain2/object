@@ -5,7 +5,7 @@ import "../Home/style.scss";
 const Index = (props) => {
   return (
     <div className="button">
-      <NavLink to="/employees">Employees Birthday Schedule</NavLink>
+      <NavLink to="/object/employees">Employees Birthday Schedule</NavLink>
     </div>
   );
 };
